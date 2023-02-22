@@ -1,0 +1,41 @@
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.top {
+    display: flex;
+    gap: 2rem;
+}
+
+.top a {
+    text-decoration: none;
+}
+
+.top li {
+    list-style: none;
+}
+
+.top ul {
+    padding-left: 0;
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.categories,
+.links,
+.about,
+.contacts {
+    flex: 1;
+}
+
+
+.bottom {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
