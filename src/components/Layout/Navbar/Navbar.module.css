@@ -1,17 +1,24 @@
 .navbar {
     height: 80px;
-    padding: 7px 14px;
+    padding: 10px 30px;
     color: black;
 
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
 
+    position: relative;
 }
 
 .navbar a {
     text-decoration: none;
     color: black;
+}
+
+.navbar .link {
+    color: rgba(112, 112, 199, 0.764);
+    scale: 1.2;
+    margin: 0 10px 0 5px;
 }
 
 .navbar li {
@@ -25,6 +32,7 @@
     align-items: center;
     gap: 10px;
     font-size: 15px;
+    flex-wrap: wrap;
 }
 
 .center {
@@ -35,7 +43,11 @@
     display: flex;
     align-items: center;
     gap: 10px;
+}
+
+.icon {
     cursor: pointer;
+
 }
 
 .cartIcon {

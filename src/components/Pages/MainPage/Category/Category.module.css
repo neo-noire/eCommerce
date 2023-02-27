@@ -1,0 +1,75 @@
+.category {
+    margin-top: 3rem;
+    height: 80vh;
+    display: grid;
+    grid-gap: .5rem;
+
+    grid-template-rows: repeat(2, 2fr);
+    grid-template-areas:
+        "cat1 cat2 cat3 cat4"
+        "cat5 cat2 cat6 cat6";
+}
+
+.item1,
+.item2,
+.item3,
+.item4,
+.item5,
+.item6 {
+    width: -webkit-fill-available;
+    height: -webkit-fill-available;
+    position: relative;
+    display: grid;
+}
+
+.gridImg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    z-index: -2;
+}
+
+.categoryName {
+    place-self: center;
+
+    text-decoration: none;
+    text-transform: uppercase;
+    color: white;
+    padding: 10px 20px;
+    background-color: rgba(145, 142, 142, 0.733);
+    transition: all .4s ease-in-out;
+}
+
+.categoryName:hover {
+    background-color: rgb(255, 255, 255);
+    color: rgba(0, 0, 0, 0.824);
+    scale: 1.2;
+}
+
+
+.item1 {
+    grid-area: cat1;
+}
+
+.item2 {
+    grid-area: cat2;
+}
+
+.item3 {
+    grid-area: cat3;
+}
+
+.item4 {
+    grid-area: cat4;
+}
+
+.item5 {
+    grid-area: cat5;
+}
+
+.item6 {
+    grid-area: cat6;
+}

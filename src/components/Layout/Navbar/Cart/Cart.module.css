@@ -1,0 +1,96 @@
+.cart {
+    margin-top: 80px;
+    padding: 1rem;
+    width: 40vw;
+
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    background-color: whitesmoke;
+    border-radius: 5px 0 0 5px;
+
+    z-index: 5;
+}
+
+.title {
+    margin-bottom: 2rem;
+}
+
+.item {
+    margin-bottom: 1rem;
+    display: flex;
+    gap: 2rem;
+}
+
+.left {
+    flex: 1;
+}
+
+.left img {
+    width: 100%;
+    max-height: 40vh;
+    object-fit: cover;
+}
+
+.center {
+    flex: 4;
+    padding: 1rem 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.right {
+    flex: .7;
+
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    color: rgb(237, 31, 31);
+    opacity: .7;
+    transition: all .3s ease-in-out;
+}
+
+.right:hover {
+    color: red;
+    opacity: 1;
+    scale: 1.3;
+}
+
+.subtotal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.subtotal h2 {
+    text-transform: uppercase;
+}
+
+.subtotal span {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.btn {
+    margin-top: 1rem;
+    padding: 0.5rem 2rem;
+    cursor: pointer;
+    color: white;
+    border: none;
+    background-color: rgba(34, 34, 225, 0.623);
+    text-transform: uppercase;
+}
+
+.reset {
+    display: block;
+    text-transform: capitalize;
+
+    margin-top: 1rem;
+    border: none;
+    background-color: transparent;
+    color: red;
+    cursor: pointer;
+}
