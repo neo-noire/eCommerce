@@ -1,6 +1,4 @@
 import axios from "axios";
-import { useDispatch } from "react-redux";
-import { addInfo } from "../../store/userSlice/userSlice";
 
 export const isAuth = async (token) => {
     

@@ -3,7 +3,7 @@ import s from './LoginPage.module.css'
 import HomeIcon from '@mui/icons-material/Home';
 import { NavLink as Link, useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import {  addUserToken } from '../../../store/userSlice/userSlice';
+import { registerUser, addImgId } from '../../../store/userSlice/userSlice';
 import axios from 'axios';
 
 export const LoginPage = () => {
@@ -13,25 +13,22 @@ export const LoginPage = () => {
     const [password, setPassword] = useState('')
 
     const dispatch = useDispatch()
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
         const user = {
             identifier,
             password
         }
-        axios
-            .post('http://localhost:1337/api/auth/local', user)
-            .then(response => {
-                // Handle success.
-                console.log('Well done!');
-                dispatch(addUserToken(response.data))
-            })
-            .catch(error => {
-                // Handle error.
-                console.log('An error occurred:', error.response);
-            });
+        try {
+            const res = await axios.post('http://localhost:1337/api/auth/local', user)
+            dispatch(registerUser(res.data))
+            
 
-        console.log('form is been submitted');
-        navigate('/')
+            console.log('form is been submitted');
+        } catch (error) {
+            console.log(error);
+        } finally {
+            navigate('/')
+        }
     }
 
 

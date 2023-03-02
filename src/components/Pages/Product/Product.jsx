@@ -4,7 +4,6 @@ import s from './Product.module.css'
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import BalanceIcon from '@mui/icons-material/Balance';
 import useFetch from '../../../hooks/useFetch'
 import { useDispatch, useSelector } from 'react-redux';
 import { add } from '../../../store/cartSlice/cartSlice'

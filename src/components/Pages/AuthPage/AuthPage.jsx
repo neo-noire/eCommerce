@@ -3,7 +3,7 @@ import s from './AuthPage.module.css'
 import HomeIcon from '@mui/icons-material/Home';
 import { NavLink as Link, useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import { addUserToken } from '../../../store/userSlice/userSlice';
+import { addImgId, registerUser } from '../../../store/userSlice/userSlice';
 import axios from 'axios';
 
 export const AuthPage = () => {
@@ -13,26 +13,40 @@ export const AuthPage = () => {
     const [password, setPassword] = useState('')
 
     const dispatch = useDispatch()
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
         const user = {
             username: userName,
             email,
             password
         }
-        axios
-            .post('http://localhost:1337/api/auth/local/register', user)
-            .then(response => {
-                // Handle success.
-                console.log('Well done!');
-                dispatch(addUserToken(response.data.jwt))
-            })
-            .catch(error => {
-                // Handle error.
-                console.log('An error occurred:', error.response);
-            });
 
-        console.log('form is been submitted');
-        navigate('/')
+        try {
+            const response = await axios.post('http://localhost:1337/api/auth/local/register', user)
+            dispatch(registerUser(response.data))
+
+            const formdata = new FormData();
+            formdata.append("data", `{"userId" : "${response.data.user.id}"}`);
+            const img = await axios.post('http://localhost:1337/api/user-imgs', formdata, {
+                headers: {
+                    Authorization: `Bearer ${response.data.jwt}`
+                }
+            })
+
+            const imgId = new FormData();
+            imgId.append("imgId", `${img.data.data.id}`);
+
+            await axios.put('http://localhost:1337/api/user/me', imgId, {
+                headers: {
+                    Authorization: `Bearer ${response.data.jwt}`
+                }
+            })
+            console.log('form is been submitted');
+        } catch (error) {
+            console.log('An error occurred:', error);
+        } finally {
+
+            navigate('/')
+        }
     }
 
 

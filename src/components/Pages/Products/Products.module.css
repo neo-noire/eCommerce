@@ -31,6 +31,10 @@
     list-style: none;
     padding-left: 0;
 }
+.chbx {
+    display: flex;
+    gap: .5rem;
+}
 
 .products {
     display: flex;

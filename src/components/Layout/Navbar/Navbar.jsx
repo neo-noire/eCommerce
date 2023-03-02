@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { NavLink as Link } from 'react-router-dom'
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
@@ -7,30 +7,31 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import s from './Navbar.module.css'
 import { Cart } from './Cart/Cart';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { routerIds } from '../../../router/routerIds'
-import { isAuth } from '../../../features/auth/isAuth';
 import { Favourites } from './Favourites/Favourites';
-import { addInfo } from '../../../store/userSlice/userSlice';
+import useAuth from '../../../hooks/useAuth';
+import { Account } from './Account/Account';
 
 
 export const Navbar = () => {
   const [openCart, setOpenCart] = useState(false)
   const [openFav, setOpenFav] = useState(false)
-  const dispatch = useDispatch()
+  const [openAcc, setOpenAcc] = useState(false)
   const products = useSelector(state => state.cartStore.cart)
   const favStore = useSelector(state => state.favStore.favourite)
 
-  const jwt = useSelector(state => state.userStore.user.jwt)
+  //custom hook for checking if user is auth
+  const jwt = useSelector(state => state?.userStore?.user?.jwt)
+  
+  const { avatar } = useAuth(jwt);
+  const [userPic, setUserPic] = useState(null)
 
   useEffect(() => {
-    if (jwt) {
-      isAuth(jwt)
-        .then(
-          response => dispatch(addInfo(response))
-        )
+    if (avatar) {
+      setUserPic(process.env.REACT_APP_UPLOAD_URL + avatar?.url)
     }
-  }, [jwt])
+  }, [avatar])
 
   return (
     <nav className={s.navbar}>
@@ -51,17 +52,26 @@ export const Navbar = () => {
         <Link className={({ isActive }) => isActive ? `${s.link}` : undefined} to='/'>Homepage</Link>
         <Link to='/about'>About</Link>
         <Link to='/contact'>Contact</Link>
-      
+
         <div className={s.icons}>
           <SearchIcon className={s.icon} />
-          {
-            jwt
-              ? <AccountCircleIcon className={s.icon} />
-              : <Link to='/auth'>
-                <AccountCircleIcon className={s.icon} />
-              </Link>
+          <div className={s.icon}>
+            {
+              jwt
+                ? <div onClick={() => setOpenAcc(prev => !prev)}>
+                  {userPic
+                    ? <div className={s.avatar}>
+                      <img src={userPic}
+                        alt='user avatar' />
+                    </div>
+                    : <AccountCircleIcon />}
+                </div>
+                : <Link to='/auth'>
+                  <AccountCircleIcon className={s.icon} />
+                </Link>
 
-          }
+            }
+          </div>
 
           {
             favStore.length !== 0
@@ -75,6 +85,7 @@ export const Navbar = () => {
           </div>
         </div>
       </div>
+      {openAcc && <Account setUserPic={setUserPic} setAcc={setOpenAcc} url={userPic} />}
       {openFav && <Favourites setOpenFav={setOpenFav} />}
       {openCart && <Cart setOpenCart={setOpenCart} />}
     </nav>

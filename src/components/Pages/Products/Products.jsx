@@ -34,7 +34,7 @@ export const Products = () => {
                     <h3 className={s.title}>Product Category</h3>
                     <ul>
                         {subCat && subCat.map((el) => <li key={el.id}>
-                            <label><input value={el.id} type='checkbox' onChange={handleChange} />{el.attributes.title}</label>
+                            <label className={s.chbx}><input value={el.id} type='checkbox' onChange={handleChange} />{el.attributes.title}</label>
                         </li>)}
                     </ul>
                 </div>
