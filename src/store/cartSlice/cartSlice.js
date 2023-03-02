@@ -10,8 +10,9 @@ export const cartSlice = createSlice({
     reducers: {
         add: (state, action) => {
             const item = state.cart.find(el => el.id === action.payload.id)
+            debugger
             item
-                ? item.number += action.payload.number
+                ? item.quantity += action.payload.quantity
                 : state.cart.push(action.payload)
         },
         deleteItem: (state, action) => {

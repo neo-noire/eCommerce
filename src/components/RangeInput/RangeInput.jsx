@@ -4,7 +4,7 @@ import Slider from '@mui/material/Slider';
 import Input from '@material-ui/core/Input';
 import s from './RangeInput.module.css'
 
-export const RangeInput = ({ value, setValue }) => {
+export const RangeInput = ({ value, setValue, maxPrice }) => {
     // const [value, setValue] = useState([0, 100])
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -15,8 +15,8 @@ export const RangeInput = ({ value, setValue }) => {
     const handleBlur = () => {
         if (value < 0) {
             setValue(0);
-        } else if (value > 100) {
-            setValue(100);
+        } else if (value > maxPrice) {
+            setValue(maxPrice);
         }
     };
     return (
@@ -55,10 +55,10 @@ export const RangeInput = ({ value, setValue }) => {
                 </div>
             </div>
             <Slider
-                getAriaLabel={() => 'Temperature range'}
                 value={value}
                 onChange={handleChange}
                 valueLabelDisplay="auto"
+                max={maxPrice}
             />
         </Box>
 

@@ -34,7 +34,7 @@ export const AuthPage = () => {
 
             const imgId = new FormData();
             imgId.append("imgId", `${img.data.data.id}`);
-
+            
             await axios.put('http://localhost:1337/api/user/me', imgId, {
                 headers: {
                     Authorization: `Bearer ${response.data.jwt}`

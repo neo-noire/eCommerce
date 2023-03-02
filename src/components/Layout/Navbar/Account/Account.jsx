@@ -31,16 +31,18 @@ export const Account = ({ setAcc, url, setUserPic }) => {
         const formdata = new FormData();
         formdata.append("data", `{"userId" : "${userInfo.user.id}"}`);
         formdata.append("files.avatar", file, "[PROXY]");
+
         const imgId = parseInt(userInfo.user.imgId)
+        
         try {
-            const result = await axios.put(`http://localhost:1337/api/user-imgs/${imgId}?populate=*`, formdata, {
+            await axios.put(`http://localhost:1337/api/user-imgs/${imgId}?populate=*`, formdata, {
                 headers: {
                     Authorization: `Bearer ${jwt}`
                 }
             })
             setFile(null)
             setUserPic(avatar)
-            return result
+            
         } catch (error) {
             console.log(error);
         }

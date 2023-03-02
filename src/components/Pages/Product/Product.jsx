@@ -30,12 +30,13 @@ export const Product = () => {
     const cartHandler = () => {
         const order = {
             id: data.id,
-            number: parseInt(inpRef.current.value),
+            quantity: parseInt(inpRef.current.value),
             title: data.attributes.title,
             desc: data.attributes.description,
             price: data.attributes.price,
             img: process.env.REACT_APP_UPLOAD_URL + data?.attributes?.img?.data?.attributes?.url,
         }
+        debugger
         dispatch(add(order))
     }
     //Favourites
@@ -50,6 +51,7 @@ export const Product = () => {
             img: process.env.REACT_APP_UPLOAD_URL + data?.attributes?.img?.data?.attributes?.url,
 
         }
+
         dispatch(addToFav(favItem))
     }
 

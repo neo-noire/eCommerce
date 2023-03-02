@@ -11,8 +11,9 @@ export const Products = () => {
 
     const [sortBy, setSortBy] = useState(null);
     const [sliderPrice, setSliderPrice] = useState([0, 100])
+    const [maxPrice, setMaxPrice] = useState(null)
 
-    const { data: img, loading: imgLoading} = useFetch(`/categories?[filters][id][$eq]=${catId}&populate=*`)
+    const { data: img, loading: imgLoading } = useFetch(`/categories?[filters][id][$eq]=${catId}&populate=*`)
 
     //list for sub-category sorting
     const { data: subCat } = useFetch(`/sub-categories?[filters][categories][id][$eq]=${catId}`)
@@ -40,7 +41,7 @@ export const Products = () => {
                 </div>
                 <div className={s.catFilter}>
                     <h3 className={s.title}>Filter by Price</h3>
-                    <RangeInput value={sliderPrice} setValue={setSliderPrice} />
+                    <RangeInput value={sliderPrice} setValue={setSliderPrice} maxPrice={maxPrice} />
                 </div>
                 <div className={s.catFilter}>
                     <h3 className={s.title}>Sort by:</h3>
@@ -79,6 +80,7 @@ export const Products = () => {
                     subCat={subCategories}
                     sortFilter={sortBy}
                     priceRange={sliderPrice}
+                    setMaxPrice={setMaxPrice}
                 />
             </div>
         </div>

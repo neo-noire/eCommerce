@@ -4,7 +4,7 @@ import { Card } from '../../../Card/Card'
 import useFetch from '../../../../hooks/useFetch'
 
 
-export const ProdList = ({ catId, subCat, sortFilter, priceRange }) => {
+export const ProdList = ({ catId, subCat, sortFilter, priceRange, setMaxPrice }) => {
     const [sorted, setSorted] = useState([]);
 
     // use 'pagination[start]=0&pagination[limit]=5' for infinity scroll logic
@@ -31,10 +31,16 @@ export const ProdList = ({ catId, subCat, sortFilter, priceRange }) => {
             }
         }
 
+        const maxPrice = data?.map(el => el.attributes.price)
+        if (maxPrice) {
+            setMaxPrice(Math.max(...maxPrice))
+        }
+
         const result = data?.filter(el => el.attributes.price >= priceRange[0] && el.attributes.price <= priceRange[1]);
         if (!sortFilter) return setSorted(result)
         sortBy(result)
     }, [sortFilter, priceRange, data])
+
 
     return (
         <div className={s.cardList}>

@@ -18,17 +18,19 @@ const useAuth = (token) => {
                 const response = await axios.get(`${process.env.REACT_APP_API_URL}/users/me?populate=*`, {
                     headers: { Authorization: `Bearer ${token}` },
                 })
+
                 const imgId = parseInt(response.data.imgId)
-                
+
                 const img = await axios.get(`${process.env.REACT_APP_API_URL}/user-imgs/${imgId}?populate=*`, {
                     headers: { Authorization: `Bearer ${token}` },
                 })
-                
                 setData(response.data)
                 setAvatar(img?.data?.data?.attributes?.avatar?.data?.attributes)
-                
-                dispatch(avatarStore(img?.data?.data[0].attributes?.avatar?.data?.attributes))
+
                 dispatch(addUserInfo(response.data))
+                dispatch(avatarStore(img?.data?.data.attributes?.avatar?.data?.attributes))
+                
+                console.log('asasas');
             } catch (error) {
                 setData(null)
                 setError(error)
