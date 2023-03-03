@@ -36,7 +36,7 @@ export const Cart = ({ setOpenCart }) => {
             const stripe = await stripePromise;
             
             const res = await axios.post(`${process.env.REACT_APP_API_URL}/orders`, cartState)
-            debugger
+         
             await stripe.redirectToCheckout({
                 sessionId: res.data.stripeSession.id
             })
