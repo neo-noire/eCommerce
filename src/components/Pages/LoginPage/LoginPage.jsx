@@ -19,7 +19,7 @@ export const LoginPage = () => {
             password
         }
         try {
-            const res = await axios.post('http://localhost:1337/api/auth/local', user)
+            const res = await axios.post(`${process.env.REACT_APP_API_URL}/auth/local`, user)
             dispatch(registerUser(res.data))
             
 

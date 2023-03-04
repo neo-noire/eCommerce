@@ -35,7 +35,7 @@ export const Account = ({ setAcc, url, setUserPic }) => {
         const imgId = parseInt(userInfo.user.imgId)
         
         try {
-            await axios.put(`http://localhost:1337/api/user-imgs/${imgId}?populate=*`, formdata, {
+            await axios.put(`${process.env.REACT_APP_API_URL}/user-imgs/${imgId}?populate=*`, formdata, {
                 headers: {
                     Authorization: `Bearer ${jwt}`
                 }

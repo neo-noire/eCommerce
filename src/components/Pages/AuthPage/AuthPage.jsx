@@ -21,12 +21,12 @@ export const AuthPage = () => {
         }
 
         try {
-            const response = await axios.post('http://localhost:1337/api/auth/local/register', user)
+            const response = await axios.post(`${process.env.REACT_APP_API_URL}/auth/local/register`, user)
             dispatch(registerUser(response.data))
 
             const formdata = new FormData();
             formdata.append("data", `{"userId" : "${response.data.user.id}"}`);
-            const img = await axios.post('http://localhost:1337/api/user-imgs', formdata, {
+            const img = await axios.post(`${process.env.REACT_APP_API_URL}/user-imgs`, formdata, {
                 headers: {
                     Authorization: `Bearer ${response.data.jwt}`
                 }
@@ -35,7 +35,7 @@ export const AuthPage = () => {
             const imgId = new FormData();
             imgId.append("imgId", `${img.data.data.id}`);
             
-            await axios.put('http://localhost:1337/api/user/me', imgId, {
+            await axios.put(`${process.env.REACT_APP_API_URL}/user/me`, imgId, {
                 headers: {
                     Authorization: `Bearer ${response.data.jwt}`
                 }
