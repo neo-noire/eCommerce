@@ -91,25 +91,31 @@ export const BurgerMenu = () => {
                         <NavLink onClick={closeHandler} to={`/products/${routerIds.men}`}>Men</NavLink>
                     </li>
                     <li className={s.categoryItem}>
-                        <NavLink onClick={closeHandler} to={`/products/${routerIds.women}`}>Women</NavLink>
+                        <NavLink className={({ isActive }) => isActive ? `${s.link}` : undefined}
+                            onClick={closeHandler} to={`/products/${routerIds.women}`}>Women</NavLink>
                     </li>
                     <li className={s.categoryItem}>
-                        <NavLink onClick={closeHandler} to={`/products/${routerIds.children}`}>Childred</NavLink>
+                        <NavLink className={({ isActive }) => isActive ? `${s.link}` : undefined}
+                            onClick={closeHandler} to={`/products/${routerIds.children}`}>Childred</NavLink>
                     </li>
                     <li className={s.categoryItem}>
-                        <NavLink onClick={closeHandler} to={`/products/${routerIds.accessories}`}>Accessories</NavLink>
+                        <NavLink className={({ isActive }) => isActive ? `${s.link}` : undefined}
+                            onClick={closeHandler} to={`/products/${routerIds.accessories}`}>Accessories</NavLink>
                     </li>
                 </ul>
                 <ul className={s.about}>
                     About Company:
                     <li className={s.aboutItem}>
-                        <NavLink onClick={closeHandler} to={`/products/${routerIds.men}`}>About</NavLink>
+                        <NavLink className={({ isActive }) => isActive ? `${s.link}` : undefined}
+                            onClick={closeHandler} to={`/about`}>About</NavLink>
                     </li>
                     <li className={s.aboutItem}>
-                        <NavLink onClick={closeHandler} to={`/products/${routerIds.women}`}>Contacts</NavLink>
+                        <NavLink className={({ isActive }) => isActive ? `${s.link}` : undefined}
+                            onClick={closeHandler} to={`/contacts`}>Contacts</NavLink>
                     </li>
                     <li className={s.aboutItem}>
-                        <NavLink onClick={closeHandler} to={`/products/${routerIds.children}`}>Delivery</NavLink>
+                        <NavLink className={({ isActive }) => isActive ? `${s.link}` : undefined}
+                            onClick={closeHandler} to={`/delivery`}>Delivery</NavLink>
                     </li>
                 </ul>
             </nav>

@@ -1,0 +1,61 @@
+.filters {
+    position: sticky;
+    grid-area: filter;
+
+    height: fit-content;
+    top: 50px;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.title {
+    margin-bottom: 1rem;
+}
+
+.catFilter ul {
+    display: flex;
+    flex-direction: column;
+    gap: .3rem;
+
+    list-style: none;
+    padding-left: 0;
+}
+
+.chbx {
+    display: flex;
+    gap: .5rem;
+}
+
+.products {
+    grid-area: prod;
+    display: flex;
+    flex-direction: column;
+
+}
+
+
+.wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100vw;
+    max-width: 100%;
+    background: rgba(0, 0, 0, 0.4);
+
+    z-index: 10;
+}
+
+.mobile {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding-left: 2rem;
+    bottom: 0;
+    width: 320px;
+    z-index: 12;
+
+    background-color: white;
+}

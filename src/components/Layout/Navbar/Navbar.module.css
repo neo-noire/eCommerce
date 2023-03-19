@@ -11,6 +11,49 @@
     position: relative;
 }
 
+@media (max-width: 768px) {
+    .navbar {
+        padding: 8px;
+        position: fixed;
+        top: 0;
+        z-index: 20;
+        left: 0;
+        height: 80px;
+        right: 0;
+        background: white;
+        height: fit-content;
+        width: 100vw;
+    }
+}
+
+.logo {
+    height: 56px;
+}
+
+.logo:hover {
+    border: none !important;
+}
+
+.logo img {
+    height: 100%;
+}
+
+.burgerBtn {
+    height: 40px;
+    width: 40px;
+    display: grid;
+    place-content: center;
+    border-radius: 3px;
+    outline: none;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+.burgerBtn:hover {
+    background-color: rgba(0, 0, 0, 0.19);
+}
+
 .navbar a {
     text-decoration: none;
     color: black;
@@ -22,9 +65,14 @@
 }
 
 .navbar .link {
-    color: rgba(112, 112, 199, 0.764);
-    scale: 1.2;
+    color: rgba(17, 177, 124, 0.919);
+    scale: 1.1;
     margin: 0 10px 0 5px;
+}
+
+.navbar a:hover {
+    color: rgba(17, 177, 124, 0.919);
+    border-bottom: 1px solid rgba(17, 177, 124, 0.919);
 }
 
 .navbar li {
@@ -58,20 +106,33 @@
 
 .cartIcon {
     position: relative;
+    height: 40px;
+    width: 40px;
+    display: grid;
+    place-content: center;
+    border-radius: 3px;
+    outline: none;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+.cartIcon:hover {
+    background-color: rgba(0, 0, 0, 0.19);
+
 }
 
 .cartIcon span {
     position: absolute;
-    text-align: center;
-
     width: 18px;
     height: 18px;
-
-    top: -40%;
-    right: -40%;
+    top: 0;
+    right: 0;
+    display: grid;
+    place-content: center;
     border-radius: 50%;
-    padding: 2px;
-    background-color: #7d84ab;
+    padding: 8px;
+    background-color: rgba(17, 177, 124, 0.919);
 }
 
 .avatar {

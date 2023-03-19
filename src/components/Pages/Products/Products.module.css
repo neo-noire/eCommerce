@@ -7,7 +7,23 @@
     grid-template-areas:
         'filter banner banner banner'
         'filter prod prod prod';
-        grid-gap: 2rem 1rem;
+    grid-gap: 2rem 1rem;
+}
+
+@media (max-width: 768px) {
+    .container {
+        margin-top: 80px;
+    }
+}
+
+@media (max-width: 1032px) {
+    .container {
+        grid-template-areas:
+            'banner banner banner'
+            'mobile mobile mobile'
+            ' prod prod prod';
+        grid-gap: 1rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -29,6 +45,34 @@
     object-position: top;
 }
 
+.mobileFilter {
+    grid-area: mobile;
+    position: sticky;
+    padding: .5rem 0;
+    top: 0;
+    z-index: 5;
+    background: white;
+}
+
+.mobileFilter button {
+    cursor: pointer;
+    padding: .5rem;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+
+    border-radius: 3px;
+    outline: none;
+    border: 1px solid rgba(17, 177, 124, 0.919);
+    color: rgba(17, 177, 124, 0.919);
+    background: transparent;
+}
+
+.mobileFilter button:hover {
+    background-color: rgba(17, 177, 124, 0.919);
+    color: white;
+
+}
 
 .filters {
     position: sticky;
@@ -64,6 +108,30 @@
     grid-area: prod;
     display: flex;
     flex-direction: column;
-   
+
 }
 
+
+.wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100vw;
+    max-width: 100%;
+    background: rgba(0, 0, 0, 0.4);
+
+    z-index: 10;
+}
+
+.mobile {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding-left: 2rem;
+    bottom: 0;
+    width: 320px;
+    z-index: 12;
+
+    background-color: white;
+}

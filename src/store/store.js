@@ -3,6 +3,7 @@ import cartReducer from './cartSlice/cartSlice'
 import favReducer from './favouriteSlice/favouriteSlice'
 import userReducer from './userSlice/userSlice';
 import menuReducer from './menuSlice/menuSlice';
+import filtersReducer from './filtersSlice/filtersSlice';
 import storage from 'redux-persist/lib/storage';
 import { persistReducer, persistStore } from 'redux-persist';
 import thunk from 'redux-thunk';
@@ -10,7 +11,7 @@ import thunk from 'redux-thunk';
 const persistConfig = {
   key: 'root',
   storage,
-  blacklist: ['menu', 'favStore', 'cartStore']
+  blacklist: ['menu', 'favStore', 'cartStore', 'filters']
 }
 const favPersistConfig = {
   key: 'favStore',
@@ -29,6 +30,7 @@ const rootReducer = combineReducers({
   favStore: persistReducer(favPersistConfig, favReducer),
   userStore: userReducer,
   menu: menuReducer,
+  filters: filtersReducer,
 })
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)

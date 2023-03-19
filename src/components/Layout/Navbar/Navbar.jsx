@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { NavLink as Link } from 'react-router-dom'
-import SearchIcon from '@mui/icons-material/Search';
+import { NavLink } from 'react-router-dom'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import s from './Navbar.module.css'
-import { Cart } from './Cart/Cart';
 import { useDispatch, useSelector } from 'react-redux';
 import { routerIds } from '../../../router/routerIds'
 import useAuth from '../../../hooks/useAuth';
@@ -16,6 +14,8 @@ import { useMediaQuery } from '@mui/material';
 import { openMenu } from '../../../store/menuSlice/menuSlice'
 import { openFav } from '../../../store/favouriteSlice/favouriteSlice';
 import { openCart } from '../../../store/cartSlice/cartSlice';
+import logo from '../../../assets/logo.png'
+
 
 export const Navbar = () => {
   const dispatch = useDispatch()
@@ -53,28 +53,30 @@ export const Navbar = () => {
     <nav className={s.navbar}>
       {
         desctopOff
-          ? <button onClick={menuHandler}><MenuRoundedIcon /></button>
+          ? <button className={s.burgerBtn} onClick={menuHandler}><MenuRoundedIcon /></button>
           : <div className={s.left}>
-            <Link className={({ isActive }) => isActive ? `${s.link}` : undefined}
-              to={`/products/${routerIds.men}`}>Men</Link>
-            <Link className={({ isActive }) => isActive ? `${s.link}` : undefined}
-              to={`/products/${routerIds.women}`}>Women</Link>
-            <Link className={({ isActive }) => isActive ? `${s.link}` : undefined}
-              to={`/products/${routerIds.children}`}>Childred</Link>
-            <Link className={({ isActive }) => isActive ? `${s.link}` : undefined}
-              to={`/products/${routerIds.accessories}`}>Accessories</Link>
+            <NavLink className={({ isActive }) => isActive ? `${s.link}` : undefined}
+              to={`/products/${routerIds.men}`}>Men</NavLink>
+            <NavLink className={({ isActive }) => isActive ? `${s.link}` : undefined}
+              to={`/products/${routerIds.women}`}>Women</NavLink>
+            <NavLink className={({ isActive }) => isActive ? `${s.link}` : undefined}
+              to={`/products/${routerIds.children}`}>Childred</NavLink>
+            <NavLink className={({ isActive }) => isActive ? `${s.link}` : undefined}
+              to={`/products/${routerIds.accessories}`}>Accessories</NavLink>
           </div>
       }
       <div className={s.center}>
-        <Link to='/'><h1>MykolaSHOP</h1></Link>
+        <NavLink className={s.logo} to={'/'}>
+          <img src={logo} />
+        </NavLink>
       </div>
       <div className={s.right}>
         {
           !desctopOff &&
           <>
-            <Link className={({ isActive }) => isActive ? `${s.link}` : undefined} to='/'>Homepage</Link>
-            <Link to='/about'>About</Link>
-            <Link to='/contact'>Contact</Link>
+            <NavLink className={({ isActive }) => isActive ? `${s.link}` : undefined} to='/'>Homepage</NavLink>
+            <NavLink to='/about'>About</NavLink>
+            <NavLink to='/contact'>Contact</NavLink>
           </>
         }
 
@@ -82,7 +84,6 @@ export const Navbar = () => {
           {
             !desctopOff &&
             <>
-              <SearchIcon className={s.icon} />
               <div className={s.icon}>
                 {
                   jwt
@@ -94,29 +95,33 @@ export const Navbar = () => {
                         </div>
                         : <AccountCircleIcon />}
                     </div>
-                    : <Link to='/auth'>
+                    : <NavLink to='/auth'>
                       <AccountCircleIcon className={s.icon} />
-                    </Link>
+                    </NavLink>
 
                 }
               </div>
+              <div className={s.cartIcon}>
+                {
+                  favStore.length !== 0
+                    ? <FavoriteIcon className={s.icon} onClick={favHandler} />
+                    : <FavoriteBorderIcon className={s.icon} onClick={favHandler} />
 
-              {
-                favStore.length !== 0
-                  ? <FavoriteIcon className={s.icon} onClick={favHandler} />
-                  : <FavoriteBorderIcon className={s.icon} onClick={favHandler} />
-
-              }
+                }
+              </div>
             </>
           }
           <div className={s.cartIcon} onClick={cartHandler}>
             <ShoppingCartOutlinedIcon className={s.icon} />
-            <span>{products.length}</span>
+            {
+              products.length > 0 &&
+              <span>{products.length}</span>
+            }
           </div>
 
         </div>
       </div>
       {openAcc && <Account setUserPic={setUserPic} setAcc={setOpenAcc} url={userPic} />}
-    </nav>
+    </nav >
   )
 }

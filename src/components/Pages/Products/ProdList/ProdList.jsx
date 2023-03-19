@@ -5,6 +5,7 @@ import useFetch from '../../../../hooks/useFetch'
 
 
 export const ProdList = ({ catId, subCat, sortFilter, priceRange, setMaxPrice }) => {
+    
     const [sorted, setSorted] = useState([]);
 
     // use 'pagination[start]=0&pagination[limit]=5' for infinity scroll logic

@@ -7,13 +7,13 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import useFetch from '../../../hooks/useFetch'
 import { useDispatch, useSelector } from 'react-redux';
 import { add } from '../../../store/cartSlice/cartSlice'
-import { addToFav } from '../../../store/favouriteSlice/favouriteSlice';
+import { addToFav, openFav } from '../../../store/favouriteSlice/favouriteSlice';
+import { useMediaQuery } from '@mui/material';
 
 
 export const Product = () => {
     const prodId = useParams().id
-
-
+    const mobile = useMediaQuery(`(max-width: 768px)`)
     const { data, loading } = useFetch(`/products/${prodId}?populate=*`)
     const [img, setImg] = useState("img")
 
@@ -36,7 +36,6 @@ export const Product = () => {
             price: data.attributes.price,
             img: data?.attributes?.img?.data?.attributes?.url,
         }
-        debugger
         dispatch(add(order))
     }
     //Favourites
@@ -53,6 +52,10 @@ export const Product = () => {
         }
 
         dispatch(addToFav(favItem))
+    }
+
+    const openFavHandler = () => {
+        dispatch(openFav())
     }
 
 
@@ -80,52 +83,62 @@ export const Product = () => {
                     </div>
                 </div>
                     <div className={s.right}>
-                        <h2 className={s.productTitle}>
-                            {data?.attributes?.title}
-                        </h2>
-                        <div className={s.price}>
-                            $ {data?.attributes?.price}
+                        <div className={s.desc}>
+                            <h2 className={s.productTitle}>
+                                {data?.attributes?.title}
+                            </h2>
+                            <div className={s.price}>
+                                $ {data?.attributes?.price}
+                            </div>
+                            <p className={s.productText}>
+                                {data?.attributes?.description}
+                            </p>
+                            {!mobile &&
+                                <div className={s.buyCounter}>
+                                    <button onClick={() => {
+                                        handleFocus();
+                                        setValue(prev => prev === 1 ? 1 : prev - 1)
+                                    }}>-</button>
+                                    <input
+                                        ref={inpRef}
+                                        type='number'
+                                        value={value}
+                                        min={0}
+                                        onChange={(e) => e.currentTarget.value === '' ? setValue(1) : setValue(e.currentTarget.value)} />
+                                    <button onClick={() => {
+                                        handleFocus()
+                                        setValue(prev => prev + 1)
+                                    }}>+</button>
+                                </div>}
+                            <button className={s.cartBtn} onClick={cartHandler}>
+                                <AddShoppingCartIcon />
+                                <span>
+                                    Add to cart
+                                </span>
+                            </button>
+                            <div className={s.sublists}>
+                                {loading
+                                    ? 'Loading...'
+                                    : favList?.find(el => el.id === data?.id)
+                                        ? <span onClick={openFavHandler}>
+                                            <FavoriteIcon />
+                                            {!mobile &&
+                                                <>
+                                                    Go to wish list
+                                                </>}
+                                        </span>
+                                        : <span onClick={addToFavourites}>
+                                            <FavoriteBorderIcon />
+                                            {!mobile &&
+                                                <>
+                                                    Add to wish list
+                                                </>}
+                                        </span>
+                                }
+                            </div>
                         </div>
-                        <p className={s.productText}>
-                            {data?.attributes?.description}
-                        </p>
-                        <div className={s.buyCounter}>
-                            <button onClick={() => {
-                                handleFocus();
-                                setValue(prev => prev === 1 ? 1 : prev - 1)
-                            }}>-</button>
-                            <input
-                                ref={inpRef}
-                                type='number'
-                                value={value}
-                                min={0}
-                                onChange={(e) => e.currentTarget.value === '' ? setValue(1) : setValue(e.currentTarget.value)} />
-                            <button onClick={() => {
-                                handleFocus()
-                                setValue(prev => prev + 1)
-                            }}>+</button>
-                        </div>
-                        <button className={s.cartBtn} onClick={cartHandler}>
-                            <AddShoppingCartIcon />
-                            <span>
-                                Add to cart
-                            </span>
-                        </button>
-                        <div className={s.sublists}>
-                            {loading
-                                ? 'Loading...'
-                                : favList?.find(el => el.id === data?.id)
-                                    ? <span >
-                                        <FavoriteIcon />
-                                        Go to wish list
-                                    </span>
-                                    : <span onClick={addToFavourites}>
-                                        <FavoriteBorderIcon />
-                                        add to wish list
-                                    </span>
-                            }
 
-                        </div>
+
                         <div className={s.info}>
                             <span>Vendor: Polo</span>
                             <span>Product Type: Shirt</span>

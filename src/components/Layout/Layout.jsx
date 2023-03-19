@@ -12,11 +12,14 @@ export const Layout = () => {
     const menuOpen = useSelector(state => state.menu.isOpen)
     const favOpen = useSelector(state => state.favStore.isOpen)
     const cartOpen = useSelector(state => state.cartStore.isOpen)
+    const mobileFiltersOpen = useSelector(state => state.filters.isOpen)
 
     return (
-        <div className={menuOpen || favOpen || cartOpen ? `${s.app}` : undefined}>
+        <div className={menuOpen || favOpen || cartOpen || mobileFiltersOpen ? `${s.app}` : undefined}>
             <Navbar />
-            <Outlet />
+            <div className={s.outlet}>
+                <Outlet />
+            </div>
             <Footer />
             {
                 menuOpen && <BurgerMenu />
