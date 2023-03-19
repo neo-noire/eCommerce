@@ -1,0 +1,5 @@
+.app {
+    width: 100vw;
+    overflow: hidden;
+    position: fixed;
+}

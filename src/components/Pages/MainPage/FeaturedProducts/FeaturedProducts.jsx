@@ -6,7 +6,7 @@ import useFetch from '../../../../hooks/useFetch'
 
 export const FeaturedProducts = ({ type }) => {
 
-    const { data, loading, error } = useFetch(`/products?populate=*&[filters][type][$eq]=${type}`)
+    const { data, loading, error } = useFetch(`/products?populate=*&[filters][type][$eq]=${type}&pagination[limit]=4`)
 
     return (
         <div className={s.featuredProducts}>

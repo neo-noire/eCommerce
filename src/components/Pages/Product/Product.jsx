@@ -34,7 +34,7 @@ export const Product = () => {
             title: data.attributes.title,
             desc: data.attributes.description,
             price: data.attributes.price,
-            img: process.env.REACT_APP_UPLOAD_URL + data?.attributes?.img?.data?.attributes?.url,
+            img: data?.attributes?.img?.data?.attributes?.url,
         }
         debugger
         dispatch(add(order))
@@ -48,7 +48,7 @@ export const Product = () => {
             title: data.attributes.title,
             desc: data.attributes.description,
             price: data.attributes.price,
-            img: process.env.REACT_APP_UPLOAD_URL + data?.attributes?.img?.data?.attributes?.url,
+            img: data?.attributes?.img?.data?.attributes?.url,
 
         }
 
@@ -64,19 +64,19 @@ export const Product = () => {
                     <div className={s.imgSmall}>
                         <img
                             onClick={() => setImg("img")}
-                            src={process.env.REACT_APP_UPLOAD_URL + data?.attributes?.img?.data?.attributes?.url}
+                            src={data?.attributes?.img?.data?.attributes?.url}
                             alt='one' />
                         <img
                             onClick={() => setImg("img2")}
-                            src={process.env.REACT_APP_UPLOAD_URL + data?.attributes?.img2?.data?.attributes?.url}
+                            src={data?.attributes?.img2?.data?.attributes?.url}
                             alt='one' />
                         <img
                             onClick={() => setImg("img3")}
-                            src={process.env.REACT_APP_UPLOAD_URL + data?.attributes?.img3?.data?.attributes?.url}
+                            src={data?.attributes?.img3?.data?.attributes?.url}
                             alt='one' />
                     </div>
                     <div className={s.imgBig}>
-                        <img src={process.env.REACT_APP_UPLOAD_URL + data?.attributes[img].data?.attributes?.url} alt='' />
+                        <img src={data?.attributes[img].data?.attributes?.url} alt='' />
                     </div>
                 </div>
                     <div className={s.right}>
@@ -124,7 +124,7 @@ export const Product = () => {
                                         add to wish list
                                     </span>
                             }
-                        
+
                         </div>
                         <div className={s.info}>
                             <span>Vendor: Polo</span>

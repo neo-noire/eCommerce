@@ -9,8 +9,7 @@ export const ProdList = ({ catId, subCat, sortFilter, priceRange, setMaxPrice })
 
     // use 'pagination[start]=0&pagination[limit]=5' for infinity scroll logic
     const { data, loading } = useFetch(`/products?&populate=*&results=10&[filters][categories][id][$eq]=${catId}${subCat?.map(
-        el => `&[filters][sub_categories][id][$eq]=${el}`)}&_limit=5&_start=0`)
-
+        el => `&[filters][sub_categories][id][$eq]=${el}`).join('')}&_limit=5&_start=0`)
     useEffect(() => {
         const sortBy = (result) => {
             if (!sortFilter) return

@@ -1,7 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-    cart: []
+    cart: [],
+    isOpen: false,
 }
 
 export const cartSlice = createSlice({
@@ -20,11 +21,17 @@ export const cartSlice = createSlice({
         },
         resetCart: (state) => {
             state.cart = []
+        },
+        openCart: (state) => {
+            state.isOpen = true;
+        },
+        closeCart: (state) => {
+            state.isOpen = false;
         }
     },
 })
 
 // Action creators are generated for each case reducer function
-export const { add, resetCart, deleteItem } = cartSlice.actions
+export const { add, resetCart, deleteItem, openCart, closeCart } = cartSlice.actions
 
 export default cartSlice.reducer

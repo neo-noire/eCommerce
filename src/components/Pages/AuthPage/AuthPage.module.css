@@ -1,5 +1,5 @@
 .main {
-    padding: 3rem;
+    padding: 1rem;
     width: 100vw;
     height: 100vh;
     display: grid;
@@ -7,15 +7,68 @@
 }
 
 .form {
-    padding: 2rem 3rem;
-    border: 1px solid black;
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    max-width: 500px;
+    border-radius: .5rem;
+    box-shadow: 0px 0px 20px 0px black;
 }
 
-.form h1 {
-    padding: .5rem 1rem;
+.form .home {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
 }
-.form form {
-    margin-top: 2rem;
+
+
+.left {
+    width: 50%;
+    overflow: hidden;
+}
+
+.left img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    scale: 1;
+    transition: scale .5s ease-in-out;
+}
+
+.left img:hover {
+    scale: 1.1;
+}
+
+
+
+.right {
+    width: 50%;
+    min-width: 260px;
+    padding: 1rem;
+}
+
+@media (max-width: 512px) {
+    .left {
+        display: none;
+    }
+
+    .right {
+        width: 100%;
+    }
+}
+
+
+.right h1 {
+    padding: 1rem 1rem 0;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: rgba(34, 41, 39, 0.823);
+}
+
+.right form {
+    max-width: 100%;
+    margin-top: 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -25,4 +78,65 @@
 .item {
     display: flex;
     flex-direction: column;
+    position: relative;
+}
+
+
+.item input {
+    margin-top: 5px;
+    width: 100%;
+    padding: 4px 10px;
+    border: 1px solid black;
+    border-radius: .5rem;
+    background-color: transparent;
+}
+
+.item input:focus {
+    outline: 2px solid rgb(238, 35, 35);
+    border: none;
+}
+
+input.valid:focus,
+input.valid {
+    border: none;
+    outline: 2px solid aquamarine;
+}
+
+.visibility {
+    padding: 3px;
+    position: absolute;
+    top: 50%;
+    right: .5rem;
+    cursor: pointer;
+}
+
+.submitBtn {
+    cursor: pointer;
+    padding: .5rem 2rem;
+    border-radius: 1rem;
+    border: 1px solid rgba(53, 200, 151, 0.919);
+    background: transparent;
+
+}
+
+.submitBtn:hover {
+    color: white;
+    background-color: rgba(53, 200, 151, 0.919);
+}
+
+.error {
+    width: 100%;
+    text-align: center;
+}
+
+.error span {
+    color: red;
+}
+
+.right>form>p>a {
+    color: rgba(53, 200, 151, 0.919);
+}
+
+.right>form>p>a:hover {
+    color: rgba(14, 90, 64, 0.919);
 }

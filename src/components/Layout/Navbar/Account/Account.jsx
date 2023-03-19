@@ -30,10 +30,10 @@ export const Account = ({ setAcc, url, setUserPic }) => {
     const uploadToServer = async () => {
         const formdata = new FormData();
         formdata.append("data", `{"userId" : "${userInfo.user.id}"}`);
-        formdata.append("files.avatar", file, "[PROXY]");
+        formdata.append("files.avatar", file, `${userInfo?.user?.username}'s avatar`);
 
         const imgId = parseInt(userInfo.user.imgId)
-        
+
         try {
             await axios.put(`${process.env.REACT_APP_API_URL}/user-imgs/${imgId}?populate=*`, formdata, {
                 headers: {
@@ -42,15 +42,15 @@ export const Account = ({ setAcc, url, setUserPic }) => {
             })
             setFile(null)
             setUserPic(avatar)
-            
+
         } catch (error) {
             console.log(error);
         }
     }
-    const timer = () => { setTimeout(() => { setAcc(false) }, 2000) }
+
 
     return (
-        <div className={s.container} onMouseLeave={timer}>
+        <div className={s.container}>
             <div className={s.top}>
                 <div className={s.left}>
                     <div className={s.wrapper}>

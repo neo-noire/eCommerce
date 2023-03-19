@@ -6,8 +6,8 @@
 
     grid-template-rows: repeat(2, 2fr);
     grid-template-areas:
-        "cat1 cat2 cat3 cat4"
-        "cat5 cat2 cat6 cat6";
+        "cat1 cat2 cat3 cat3"
+        "cat5 cat2 cat4 cat4";
 }
 
 .item1,
@@ -70,6 +70,3 @@
     grid-area: cat5;
 }
 
-.item6 {
-    grid-area: cat6;
-}

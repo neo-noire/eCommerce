@@ -1,11 +1,33 @@
 /* Cards styling */
-.card {
-    cursor: pointer;
-}
+
 .link {
+    /* max-width: 200px; */
+    width: calc(25% - .5rem);
     text-decoration: none;
     color: black;
 }
+
+.card {
+    width: 100%;
+    cursor: pointer;
+}
+
+@media (max-width: 900px) {
+    .link {
+        width: calc(33.333% - .5rem);
+    }
+}
+@media (max-width: 716px) {
+    .link {
+        width: calc(50% - .5rem);
+    }
+}
+
+/* @media (max-width: 480px) {
+    .link {
+        width: calc(100%);
+    }
+} */
 
 .isNew {
     position: absolute;
@@ -18,9 +40,10 @@
 }
 
 .imgCard {
+    width: 100%;
     position: relative;
     height: 300px;
-    max-width: 200px;
+    
 }
 
 .img {

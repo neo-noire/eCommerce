@@ -1,19 +1,42 @@
 .container {
-    max-width: 1300px;
+    max-width: 1198px;
     margin: 0 auto;
     padding: 0 3rem;
-    display: flex;
-    justify-content: space-between;
 
-    gap: 2rem;
+    display: grid;
+    grid-template-areas:
+        'filter banner banner banner'
+        'filter prod prod prod';
+        grid-gap: 2rem 1rem;
 }
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 .3rem;
+        grid-gap: 1rem 0;
+    }
+}
+
+.productsBanner {
+    width: 100%;
+    grid-area: banner;
+}
+
+.catImg {
+    width: 100%;
+    max-height: 250px;
+    object-fit: cover;
+    object-position: top;
+}
+
 
 .filters {
     position: sticky;
+    grid-area: filter;
 
-    height: 100%;
+    height: fit-content;
     top: 50px;
-
+    width: 200px;
     display: flex;
     flex-direction: column;
     gap: 2rem;
@@ -31,20 +54,16 @@
     list-style: none;
     padding-left: 0;
 }
+
 .chbx {
     display: flex;
     gap: .5rem;
 }
 
 .products {
+    grid-area: prod;
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+   
 }
 
-.catImg {
-    width: 70vw;
-    max-height: 250px;
-    object-fit: cover;
-    object-position: top;
-}
