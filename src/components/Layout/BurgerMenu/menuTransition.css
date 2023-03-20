@@ -1,0 +1,39 @@
+.wrapper-enter {
+    opacity: 0;
+}
+
+.wrapper-enter-active {
+    opacity: 1;
+    transition: all 500ms;
+}
+
+.wrapper-exit {
+    opacity: 1;
+}
+
+.wrapper-exit-active {
+    opacity: 0;
+    transition: all 500ms;
+}
+
+.menu-enter {
+    left: -200vw;
+}
+
+.menu-enter-active {
+    left: 0;
+    transition: all 500ms;
+}
+
+.menu-enter-done {
+    left: 0;
+}
+
+.menu-exit {
+    left: 0;
+}
+
+.menu-exit-active {
+    left: -100vw;
+    transition: all 500ms;
+}

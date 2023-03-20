@@ -25,7 +25,8 @@ export const LoginPage = () => {
             return 'password'
         }
     }
-    const handleSubmit = async () => {
+    const handleSubmit = async (e) => {
+        e.preventDefault()
         const user = {
             identifier,
             password
@@ -57,7 +58,7 @@ export const LoginPage = () => {
                     <h1>
                         Sign In
                     </h1>
-                    <form onSubmit={(e) => e.preventDefault()}>
+                    <form onSubmit={(e) => handleSubmit(e)}>
                         <div className={s.item}>
                             <label htmlFor="email" >Your User Name or Email</label>
                             <input
@@ -92,8 +93,7 @@ export const LoginPage = () => {
 
                         <button
                             className={s.submitBtn}
-                            type="submit"
-                            onClick={handleSubmit}>Login</button>
+                            type="submit">Login</button>
                         <p>
                             Don't have an account?
                             <Link to='/auth'>Sign Up</Link>

@@ -30,7 +30,7 @@ export const Product = () => {
     const cartHandler = () => {
         const order = {
             id: data.id,
-            quantity: parseInt(inpRef.current.value),
+            quantity: parseInt(inpRef?.current?.value) || 1,
             title: data.attributes.title,
             desc: data.attributes.description,
             price: data.attributes.price,

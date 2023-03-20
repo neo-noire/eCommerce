@@ -25,7 +25,9 @@ export const AuthPage = () => {
         }
     }
 
-    const handleSubmit = async () => {
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+
         const user = {
             username: userName,
             email,
@@ -76,7 +78,7 @@ export const AuthPage = () => {
                     <h1>
                         Register your account
                     </h1>
-                    <form onSubmit={(e) => e.preventDefault()}>
+                    <form onSubmit={e => handleSubmit(e)}>
                         <div className={s.item}>
                             <label htmlFor="email" >Your User Name</label>
                             <input
@@ -121,7 +123,7 @@ export const AuthPage = () => {
                         <button
                             className={s.submitBtn}
                             type="submit"
-                            onClick={handleSubmit}>Register</button>
+                        >Register</button>
                         <p>
                             Already have an account?
                             <Link to='/login'>Sign In</Link>

@@ -1,0 +1,47 @@
+/* CART TRANSITION RULES */
+
+.cart-enter {
+    opacity: 0;
+    scale: .2;
+}
+
+.cart-enter-active {
+    opacity: 1;
+    scale: 1;
+    transition: all 500ms;
+}
+
+.cart-exit {
+    scale: 1;
+    opacity: 1;
+}
+
+.cart-exit-active {
+    scale: .2;
+    opacity: 0;
+    transition: all 500ms;
+}
+
+/* FAVORITE TRANSITION RULES */
+
+.favorites-enter {
+    opacity: 0;
+    scale: .2;
+}
+
+.favorites-enter-active {
+    opacity: 1;
+    scale: 1;
+    transition: all 500ms;
+}
+
+.favorites-exit {
+    scale: 1;
+    opacity: 1;
+}
+
+.favorites-exit-active {
+    scale: .2;
+    opacity: 0;
+    transition: all 500ms;
+}

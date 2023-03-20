@@ -29,7 +29,7 @@ const useAuth = (token) => {
 
                 dispatch(addUserInfo(response.data))
                 dispatch(avatarStore(img?.data?.data.attributes?.avatar?.data?.attributes))
-                
+
                 console.log('asasas');
             } catch (error) {
                 setData(null)

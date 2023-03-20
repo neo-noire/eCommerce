@@ -4,7 +4,6 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { useDispatch, useSelector } from 'react-redux';
 import { resetCart, deleteItem, closeCart } from '../../../../store/cartSlice/cartSlice';
 import { loadStripe } from '@stripe/stripe-js';
-import { makeRequest } from '../../../../features/makeRequest';
 import axios from 'axios';
 import { NavLink } from 'react-router-dom';
 
@@ -36,7 +35,7 @@ export const Cart = ({ setOpenCart }) => {
     const stripePromise = loadStripe('pk_test_51MhD15B0niWLCqAgQGZDnkmH9SbRiwnrLNzgfNijjyanaSCzlfzcjKet2cgV0lbzXoLsjwLxR7AjuYIWBFf8QAPR00ItOrFJHV');
     //payment by strapi service
     const handlePayment = async () => {
-
+        if (cartState.length === 0) return alert('Your cart is empty')
         try {
             const stripe = await stripePromise;
 
@@ -90,14 +89,15 @@ export const Cart = ({ setOpenCart }) => {
                     }
                 </div>
                 <div className={s.bottom}>
-                    <div className={s.subtotal}>
-                        <h2>SUBTOTaL</h2>
-                        <span>$ {totalPrice()}</span>
-                    </div>
-                    <button onClick={handlePayment} className={s.btn}>Proceed to checkout</button>
                     <button
                         onClick={resetHandler}
                         className={s.reset}>Reset Cart</button>
+                    <div className={s.checkout}>
+                        <div className={s.subtotal}>
+                            <span>$ {totalPrice()}</span>
+                        </div>
+                        <button onClick={handlePayment} className={s.btn}>Proceed to checkout</button>
+                    </div>
                 </div>
             </div>
         </div>

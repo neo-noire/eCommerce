@@ -114,6 +114,7 @@ input.valid {
     cursor: pointer;
     padding: .5rem 2rem;
     border-radius: 1rem;
+    color: black;
     border: 1px solid rgba(53, 200, 151, 0.919);
     background: transparent;
 

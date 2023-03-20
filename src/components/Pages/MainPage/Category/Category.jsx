@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import s from './Category.module.css'
 import { Link } from 'react-router-dom'
 import { routerIds } from '../../../../router/routerIds'
 
 export const Category = () => {
+
     return (
         <div className={s.category}>
             <div className={s.item1}>

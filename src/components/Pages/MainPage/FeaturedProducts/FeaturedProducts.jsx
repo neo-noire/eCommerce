@@ -24,7 +24,7 @@ export const FeaturedProducts = ({ type }) => {
                         ? 'Some error looks like!'
                         : loading
                             ? 'Loading in progress'
-                            : data?.map(el => <Card key={el.id} id={el.id} data={el.attributes} />)
+                            : data?.map(el => <Card styles={{ minWidth: '215px' }} key={el.id} id={el.id} data={el.attributes} />)
                 }
             </div>
         </div>

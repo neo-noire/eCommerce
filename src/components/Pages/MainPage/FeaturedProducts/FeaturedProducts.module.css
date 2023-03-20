@@ -1,10 +1,10 @@
-
 .featuredProducts {
     max-width: 1200px;
     margin: 4rem auto 0;
     padding: 0 1rem;
-    
+
 }
+
 .top {
     display: flex;
     align-items: center;
@@ -34,12 +34,15 @@
 /* /// product Cards list field */
 .products {
     display: flex;
-    align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
+    align-items: stretch;
     gap: 1rem;
-    flex-wrap: wrap;
-
     margin-top: 2rem;
 }
 
-
+@media (max-width: 900px) {
+    .products {
+        flex-wrap: nowrap;
+        overflow-x: scroll;
+    }
+}

@@ -4,9 +4,11 @@ import { Navbar } from './Navbar/Navbar'
 import { Footer } from './Footer/Footer'
 import { BurgerMenu } from './BurgerMenu/BurgerMenu'
 import s from './Layout.module.css'
+import './transition.css'
 import { useSelector } from 'react-redux'
 import { Favourites } from './Navbar/Favourites/Favourites'
 import { Cart } from './Navbar/Cart/Cart'
+import { CSSTransition } from 'react-transition-group'
 
 export const Layout = () => {
     const menuOpen = useSelector(state => state.menu.isOpen)
@@ -21,17 +23,27 @@ export const Layout = () => {
                 <Outlet />
             </div>
             <Footer />
-            {
-                menuOpen && <BurgerMenu />
-            }
-            {
-                favOpen &&
+            <BurgerMenu />
+            <CSSTransition
+                in={favOpen}
+                timeout={500}
+                classNames='cart'
+                mountOnEnter
+                unmountOnExit
+            >
                 <Favourites />
-            }
-            {
-                cartOpen &&
+            </CSSTransition>
+
+            <CSSTransition
+                in={cartOpen}
+                timeout={500}
+                classNames='cart'
+                mountOnEnter
+                unmountOnExit
+            >
                 <Cart />
-            }
+            </CSSTransition>
+
         </div>
     )
 }
