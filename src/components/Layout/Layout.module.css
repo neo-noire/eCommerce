@@ -2,12 +2,15 @@
     width: 100vw;
     overflow: hidden;
     position: fixed;
+    background-color: whitesmoke;
+}
+
+.bg {
+
+    background-color: whitesmoke;
 }
 
 
-@media (max-width: 768px) {
-    .outlet {
-        margin-top: 80px;
-    }
-
+.outlet {
+    margin-top: 55px;
 }

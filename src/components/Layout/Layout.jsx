@@ -17,11 +17,11 @@ export const Layout = () => {
     const mobileFiltersOpen = useSelector(state => state.filters.isOpen)
 
     return (
-        <div className={menuOpen || favOpen || cartOpen || mobileFiltersOpen ? `${s.app}` : undefined}>
+        <div className={menuOpen || favOpen || cartOpen || mobileFiltersOpen ? `${s.app}` : `${s.bg}`}>
             <Navbar />
-            <div className={s.outlet}>
+            <main className={s.outlet}>
                 <Outlet />
-            </div>
+            </main>
             <Footer />
             <BurgerMenu />
             <CSSTransition

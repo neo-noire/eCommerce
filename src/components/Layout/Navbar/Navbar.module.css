@@ -1,41 +1,55 @@
+.wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9;
+    background-color: whitesmoke;
+}
 .navbar {
-    height: 80px;
-    padding: 10px 30px;
+    max-width: 1096px;
+    padding: 0 16px;
+    margin: 0 auto;
+
+
+    max-height: 80px;
     color: black;
 
     display: flex;
-    justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
 
     position: relative;
 }
 
+
 @media (max-width: 768px) {
     .navbar {
-        padding: 8px;
+        padding: 0 8px;
         position: fixed;
         top: 0;
         z-index: 20;
         left: 0;
         height: 80px;
         right: 0;
-        background: white;
+        background: whitesmoke;
         height: fit-content;
         width: 100vw;
     }
 }
 
-.logo {
-    height: 56px;
+.left,
+.right {
+    flex: 1;
 }
 
-.logo:hover {
-    border: none !important;
+.center {
+    flex: 3;
+    justify-content: center;
 }
 
-.logo img {
-    height: 100%;
+.right {
+    justify-content: flex-end;
 }
 
 .burgerBtn {
@@ -54,30 +68,20 @@
     background-color: rgba(0, 0, 0, 0.19);
 }
 
-.navbar a {
-    text-decoration: none;
-    color: black;
+
+
+.logo {
+    height: 56px;
 }
 
-.center h1 {
-    font-size: 1.5rem;
-    font-weight: 600;
+.logo:hover {
+    border: none !important;
 }
 
-.navbar .link {
-    color: rgba(17, 177, 124, 0.919);
-    scale: 1.1;
-    margin: 0 10px 0 5px;
+.logo img {
+    height: 100%;
 }
 
-.navbar a:hover {
-    color: rgba(17, 177, 124, 0.919);
-    border-bottom: 1px solid rgba(17, 177, 124, 0.919);
-}
-
-.navbar li {
-    list-style: none;
-}
 
 .left,
 .center,

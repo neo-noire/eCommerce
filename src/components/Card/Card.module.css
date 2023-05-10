@@ -10,6 +10,7 @@
 .card {
     width: 100%;
     cursor: pointer;
+    background-color: whitesmoke;
 }
 
 @media (max-width: 900px) {
@@ -89,4 +90,8 @@
 
 .price {
     font-size: 1.2rem;
+}
+
+.cardDescription {
+    padding: .5rem;
 }

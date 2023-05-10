@@ -1,0 +1,33 @@
+.wrapper {
+    padding: 2rem 0;
+    position: relative;
+}
+
+@media (max-width:850px) {
+    .buttonWrapper {
+        display: none;
+    }
+}
+
+.buttonLeft,
+.buttonRight {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    z-index: 1;
+    cursor: pointer;
+    border-radius: 50%;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttonLeft {
+    left: 0;
+}
+
+.buttonRight {
+    right: 0;
+}

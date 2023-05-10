@@ -1,0 +1,87 @@
+.cardWrapper {
+    padding: 8px;
+}
+
+.categoryCard {
+    position: relative;
+    height: 40vh;
+    overflow: hidden;
+    border-radius: 1rem;
+    transition: all .3s ease-in-out;
+
+}
+
+.cardWrapper:hover::before {
+    opacity: 1;
+}
+
+.cardImg {
+    width: 100%;
+    height: 100%;
+
+}
+
+.cardImg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cardLink {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    display: block;
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background-color: rgba(0, 0, 0, 0.293);
+
+    text-decoration: none;
+
+}
+
+.cardLink span {
+    color: white;
+    font-size: 1.4rem;
+    font-weight: 500;
+    line-height: 1.75;
+
+    position: relative;
+    bottom: -1rem;
+    transition: all .5s ease-in-out;
+}
+
+.cardLink button {
+    cursor: pointer;
+    padding: 12px 24px;
+    background-color: whitesmoke;
+    border: none;
+    border-radius: 16px;
+
+    transition: all .5s ease-in-out;
+    position: relative;
+    bottom: -1rem;
+    opacity: 0;
+}
+
+
+.categoryCard:hover {
+    scale: 1.05;
+}
+
+
+.categoryCard:hover .cardLink button {
+    bottom: 0;
+    opacity: 1;
+}
+
+.categoryCard:hover .cardLink span {
+    bottom: 0;
+}

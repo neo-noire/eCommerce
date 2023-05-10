@@ -1,0 +1,68 @@
+.wrapper {
+    position: relative;
+}
+
+
+.paralaxContainer {
+    height: 40vh;
+
+    max-width: 100%;
+    /* margin-bottom: 100px; */
+}
+
+
+.parallaxText {
+    /* margin-top: 3rem; */
+    max-width: 1096px;
+    margin: 0 auto;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    color: white;
+    opacity: 0;
+    transform: translateY(100px);
+    transition: all .8s ease-in-out;
+}
+
+.opacity {
+    transform: translateY(0px);
+    opacity: 1;
+}
+
+.parallaxText h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: 2px;
+}
+
+.parallaxText p {
+    padding-top: 2rem;
+    max-width: 500px;
+}
+
+.parallaxText a {
+    margin-top: 1rem;
+    font-size: 1.5rem;
+    padding: 1rem 1.5rem;
+    background-color: whitesmoke;
+    color: black;
+    border-radius: 2em;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.parallaxCards {
+    max-width: 1096px;
+    margin: 0 auto;
+    opacity: 0;
+    transform: translateX(-200px);
+    transition: all .5s ease-in;
+}
+
+.cardsOpacity {
+    opacity: 1;
+    transform: translateX(0px);
+}

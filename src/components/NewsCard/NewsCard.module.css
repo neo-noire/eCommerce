@@ -1,0 +1,141 @@
+/* Container itself */
+.cardContainer {
+    /* height: 500px; */
+    max-width: 420px;
+    aspect-ratio: 6/9;
+    position: relative;
+    isolation: isolate;
+    scale: .98;
+    cursor: pointer;
+    transition: scale .2s ease-in-out;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.cardContainer.nth {
+    background-color: rgba(203, 201, 201, 0.3);
+}
+
+
+
+.cardContainer:hover {
+    scale: 1;
+}
+
+.cardContainer:hover .cardInner {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.cardContainer:hover.nth .cardInner {
+    background-color: rgb(237, 235, 235);
+}
+
+/* title and text of the news */
+
+.cardInner {
+    padding: 1rem;
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    transition: all .5s ease-in-out;
+
+}
+.hovered {
+    position: absolute;
+    top: 35%;
+    transition: top .5s ease-in-out;
+}
+.cardTitle {
+    font-size: 22px;
+    padding: 1rem 0;
+    color: whitesmoke;
+    text-shadow: -1px 1px black;
+}
+
+.nth .cardTitle {
+    color: black;
+    text-shadow: none;
+}
+
+.cardInner:hover .hovered{
+    top: 0;
+}
+
+.hovered p {
+   opacity: 0;
+    color: white;
+    transition: all .5s ease-in-out;
+}
+
+.nth p {
+    color: black;
+}
+
+.cardInner:hover p {
+    opacity: 1;
+}
+@media screen and (max-width: 960px) {
+    .hovered p {
+        opacity: 1;
+     } 
+}
+/* Button */
+
+.linkButton {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+
+    text-decoration: none;
+    padding: .5rem 1rem;
+    font-weight: 500;
+    border: 3px solid whitesmoke;
+    color: whitesmoke;
+    background-color: transparent;
+    border-radius: 18px;
+}
+
+.cardInner:hover .linkButton {
+    color: black;
+    background-color: whitesmoke;
+}
+
+.nth .cardInner .linkButton {
+    background-color: whitesmoke;
+    color: black;
+    background-color: whitesmoke;
+    
+}
+
+.nth .cardInner:hover .linkButton {
+    border: 3px solid black;
+    background-color: black;
+    color: whitesmoke;
+
+}
+
+/* Background Image */
+
+.cardImg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -10;
+
+    overflow: hidden;
+
+}
+
+.cardImg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.nth .cardImg {
+  height: 150px;  
+}
